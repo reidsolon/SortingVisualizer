@@ -3,6 +3,9 @@ var sorted_array = [];
 var container = document.querySelector('#barsContainer');
 var arr_cont = document.querySelector('#array');
 
+//
+var jsDefaultSort = [];
+
 //init booleans
 var bubble_sorted = false;
 
@@ -20,6 +23,7 @@ var tick = 0;
 //
 var interval = null;
 
+//active all buttons
 const activeButtons = () => {
     for (var i = 0; i < sort_btns.length; i++) {
         sort_btns[i].removeAttribute('disabled', 'disabled');
@@ -27,6 +31,7 @@ const activeButtons = () => {
 
 }
 
+//disabling all buttons
 const disableButtons = () => {
     for (var i = 0; i < sort_btns.length; i++) {
         sort_btns[i].setAttribute('disabled', 'disabled');
@@ -40,6 +45,7 @@ const generateNewArray = () => {
         generateRandom(sort_size.value, sort_size.value / 4);
     }
 }
+
 const generateRandom = (_LENGTH, _NUM) => {
     //clear tick
     tick = 0;
@@ -76,13 +82,18 @@ const bubbleSort = ( INTERVAL ) => {
             bubbleSortAlgo();
             tick++;
             if (tick >= array.length) {
-                sortFinish();
+
+                sorted_array = array;
+                jsDefaultSort = array.sort();
+                sortFinish(sorted_array, jsDefaultSort);
                 activeButtons();
                 stop();
                 clearInterval(interval);
                 bubble_sorted = true;
-                //clear tic k
+                
+                //clear tick
                 tick = 0;
+
             }
         }, 250);
     }else {
@@ -98,7 +109,6 @@ const bubbleSortAlgo = () => {
                 var _temp = array[i];
                 array[i] = array[count];
                 array[count] = _temp;
-                
             }
             count++;
             refreshBars();
@@ -117,12 +127,26 @@ const refreshBars = () => {
     container.innerHTML = html;
 }
 
-const sortFinish = () => {
-    for(var i = 0 ; i<array.length ; i ++){
+const sortFinish = ( _FIRSTARRAY, _SECONDARRAY ) => {
 
-        bars_class[i].style.backgroundColor = 'rgb(15, 95, 241)';
+    if(areEqual(_FIRSTARRAY, _SECONDARRAY)){
+        for (var i = 0; i < array.length; i++) {
+            bars_class[i].style.backgroundColor = 'rgb(15, 95, 241)';
+        }
 
+        console.log('Bubble Sorted!');
     }
 
 }
 
+
+//valdiate purposes
+const areEqual = (firstArray, secondArray)=> {
+    if (firstArray !== secondArray) return false;
+
+    for(var i = 0; i < firstArray.length ; i++){
+        if(firstArray[i] !== secondArray[i]) return false;
+    }
+
+    return true;
+}

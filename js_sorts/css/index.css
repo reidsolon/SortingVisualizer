@@ -1,21 +1,12 @@
 body, html {
     padding: 0;
-    margin: 0;;
+    margin: 0;
     background-color: #f0f0f0;
-}
-
-#randomNums {
-    bottom: 10;
-}
-
-#barsContainer {
-    height: 85vh;
 }
 .num {
     display: inline-block;
     background-color: blueviolet;
     margin-right: 2px;
-    width: 7px;
     color: #fff;
 }
 
@@ -23,9 +14,16 @@ body, html {
     background-color: red;
 }
 
+#array {
+    position: fixed;
+    bottom: 0;;
+}
+
+
 #actions_area {
     background-color: red;
     padding: 15px;
+    color: #fff;
 }
 .animate{
     animation: animate 0.2s;

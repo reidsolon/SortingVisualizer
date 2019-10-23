@@ -11,32 +11,39 @@
 </head>
 <body>
 
-    <div id="randomNums" class="container">
+    <div id="randomNums" class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12" id="actions_area">
-                
-                <input type="range" onchange="generateRandom(this.value, this.value/4 )" oninput="generateRandom(this.value, this.value/4 )" step="1"
-                    id="sort_size" min="250" max="500"/>
-
-                <input type="button" value="Bubble Sort" class="sort_btns" onclick="bubbleSort()"/>
-                <!-- <input type="button" value="Quick Sort" class="sort_btns" onclick="bubbleSort()"/>
-                <input type="button" value="Merge Sort" class="sort_btns" onclick="bubbleSort()"/>
-                <input type="button" value="Selection Sort" class="sort_btns"  onclick="bubbleSort()" /> -->
-
-                <input type="button" value="Generate New Array" class="sort_btns" onclick="generateNewArray()" />
+                   
+                    <div class="row">
+                        <p><strong>Generate new array and speed</strong> </p>
+                        <input type="range" onchange="generateRandom(this.value, this.value/4 )"
+                            oninput="generateRandom(this.value, this.value/4 )" step="1" id="sort_size" min="250" max="500" />
+                        <input type="button" value="Bubble Sort" class="sort_btns" onclick="bubbleSort()" />
+                        <!-- <input type="button" value="Quick Sort" class="sort_btns" onclick="bubbleSort()"/>
+                                                            <input type="button" value="Merge Sort" class="sort_btns" onclick="bubbleSort()"/>
+                                                            <input type="button" value="Selection Sort" class="sort_btns"  onclick="bubbleSort()" /> -->
+                        
+                        <input type="button" value="Generate New Array" class="sort_btns" onclick="generateNewArray()" />
+                    </div>
+                    
+                    
             </div>
+                
         </div>
         <div class="row justify-content-center">
             
             <div id="col-md-12 col-lg-12">
-                <div class="row justify-content-center">
-                    <div id="barsContainer">
+               
+                <div id="barsContainer">
                     
-                    </div>
                 </div>
-                
+            
+            </div>
+
+            <div class="col-md-12">
                 <div id="array">
-                    
+                
                 </div>
             </div>
         </div>
