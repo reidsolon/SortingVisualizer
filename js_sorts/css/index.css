@@ -1,0 +1,37 @@
+body, html {
+    padding: 0;
+    margin: 0;;
+    background-color: #f0f0f0;
+}
+
+#randomNums {
+    bottom: 10;
+}
+
+#barsContainer {
+    height: 85vh;
+}
+.num {
+    display: inline-block;
+    background-color: blueviolet;
+    margin-right: 2px;
+    width: 7px;
+    color: #fff;
+}
+
+.red {
+    background-color: red;
+}
+
+#actions_area {
+    background-color: red;
+    padding: 15px;
+}
+.animate{
+    animation: animate 0.2s;
+}
+
+@keyframes animate {
+    from {height: 0px}
+    to {}
+}
