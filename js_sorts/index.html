@@ -16,15 +16,30 @@
             <div class="col-md-12" id="actions_area">
                    
                     <div class="row">
-                        <p><strong>Generate new array and speed</strong> </p>
-                        <input type="range" onchange="generateRandom(this.value, this.value/4 )"
-                            oninput="generateRandom(this.value, this.value/4 )" step="1" id="sort_size" min="250" max="500" />
-                        <input type="button" value="Bubble Sort" class="sort_btns" onclick="bubbleSort()" />
-                        <!-- <input type="button" value="Quick Sort" class="sort_btns" onclick="bubbleSort()"/>
-                                                            <input type="button" value="Merge Sort" class="sort_btns" onclick="bubbleSort()"/>
-                                                            <input type="button" value="Selection Sort" class="sort_btns"  onclick="bubbleSort()" /> -->
+                        <div class="col-md-4">
+                            <div class="row">
+                                <p style="margin: auto;"><strong>Generate new array and speed</strong> </p>
+                                <input type="range" onchange="generateRandom(this.value, this.value/4 )"
+                                    oninput="generateRandom(this.value, this.value/4 )" step="1" id="sort_size" min="50" max="500" />
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-md-4">
                         
-                        <input type="button" value="Generate New Array" class="sort_btns" onclick="generateNewArray()" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <input type="button" value="Bubble Sort" class="sort_btns btn btn-primary" onclick="bubbleSortAlgo()" />&nbsp;
+                            <!-- <input type="button" value="Quick Sort" class="sort_btns" onclick="bubbleSort()"/>
+                                                                                        <input type="button" value="Merge Sort" class="sort_btns" onclick="bubbleSort()"/>
+                                                                                        <input type="button" value="Selection Sort" class="sort_btns"  onclick="bubbleSort()" /> -->
+                            
+                            <input type="button" value="Generate New Array" class="sort_btns btn btn-info" onclick="generateNewArray()" />
+                        </div>
+                    
+                       
+                        
                     </div>
                     
                     
@@ -32,7 +47,6 @@
                 
         </div>
         <div class="row justify-content-center">
-            
             <div id="col-md-12 col-lg-12">
                
                 <div id="barsContainer">
@@ -41,10 +55,38 @@
             
             </div>
 
-            <div class="col-md-12">
-                <div id="array">
-                
+            <div class="col-md-12" id="info-holder">
+                <div class="row">
+                    <div class="col-md-12">
+                        Status:
+                        <code id="status">--</code>
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        Sorting Speed:
+                        <code id="sort-speed"></code><code>ms</code>
+                    </div>    
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        Total Loops / Ticks: 
+                        <code id="total-loops">0</code> / <code id="total-ticks">0</code>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                       Condition Used:
+                        <code id="condition"> -- </code>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        Real Time Data[ <code id="total-array">0</code> ]: &nbsp;&nbsp;&nbsp;
+                        <code id="array"></code>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>

@@ -5,7 +5,6 @@ body, html {
 }
 .num {
     display: inline-block;
-    background-color: blueviolet;
     margin-right: 2px;
     color: #fff;
 }
@@ -14,14 +13,14 @@ body, html {
     background-color: red;
 }
 
-#array {
+#info-holder {
     position: fixed;
     bottom: 0;;
 }
 
 
 #actions_area {
-    background-color: red;
+    background-color: rgb(99, 22, 243);
     padding: 15px;
     color: #fff;
 }
