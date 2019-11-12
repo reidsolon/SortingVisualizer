@@ -103,6 +103,8 @@ generateRandom(sort_size.value, sort_size.value / 4);
 const bubbleSortAlgo = () => {
     disableButtons();
     var i = 0, count = 1, tick = 0;
+    var temp_array = array.slice();
+    console.log(temp_array.sort((a, b) => { return a - b }) === array);
         bubbleInterval = setInterval(() => {
             if (!isSorted) {
                 status_txt.innerHTML = 'Sorting..';
@@ -119,32 +121,30 @@ const bubbleSortAlgo = () => {
 
                 }
 
-
-
-                if (total_loops == array.length - 1) {
-                    clearInterval(bubbleInterval);
-                    total_loops = 0;
-                    isSorted = true;
-                    activeButtons();
-                    status_txt.innerHTML = 'Sorted';
-
-                    sortedAnimation();
-                    
-                }
-
                 count++;
                 i++;
                 tick++;
                 temp_ticks++;
 
+                if (total_loops == array.length - 1) {
+                    sorted_array.unshift(array[0]);
+                    clearInterval(bubbleInterval);
+                    total_loops = 0;
+                    isSorted = true;
+                    activeButtons();
+                    status_txt.innerHTML = 'Bubble Sorted';
+                    sortedAnimation();
+                }
+
                 if (tick == array.length - (total_loops + 1)) {
+                    sorted_array.unshift(array[i]);
                     tick = 0;
                     total_loops++;
                     view_loops.innerHTML = total_loops;
-                    clearInterval(bubbleInterval);
-                    sorted_array.unshift(array[i]);
                     console.log(sorted_array);
+                    clearInterval(bubbleInterval);
                     bubbleSortAlgo();
+
                 }
 
             } else {
@@ -157,15 +157,13 @@ const bubbleSortAlgo = () => {
     
 
         function _doAnimation(arr1, arr2){
-            // for (var i = 0; i < bars_class.length; i++) {
-            //     bars_class[i].style.backgroundColor = 'blueviolet';
-            // }
+
             document.getElementsByClassName('bar_' + arr1)[0].style.backgroundColor = '#6CDB7B';
             document.getElementsByClassName('bar_' + arr2)[0].style.backgroundColor = '#6CDB7B';
 
             setTimeout(() => {
                 refreshBars();
-            }, 100);
+            }, 60);
 
             
         }
@@ -184,7 +182,7 @@ const bubbleSortAlgo = () => {
             setTimeout(() => {
                 document.getElementsByClassName('bar_' + arr1)[0].style.backgroundColor = '#DD5C5C';
                 document.getElementsByClassName('bar_' + arr2)[0].style.backgroundColor = '#DD5C5C';
-            }, 40 );
+            }, 50 );
             
                        
             
@@ -343,23 +341,30 @@ const refreshBars = () => {
 
 
 const sortedAnimation = () => {
-    var i = 0; 
-    sortedInterval = setInterval(() => {
+    // if(areEqual(array.sort((a,b) => {return a-b}) , sorted_array)){
+        var i = 0;
+        sortedInterval = setInterval(() => {
 
-        if(i<array.length){
-            bars_class[i].style.backgroundColor = '#6CDB7B';
-            i++;
-        } else {
-          clearInterval(sortedInterval);
-          refreshBars();
-        }
+            if (i < array.length) {
+                bars_class[i].style.backgroundColor = '#6CDB7B';
+                i++;
+            } else {
+                clearInterval(sortedInterval);
+                refreshBars();
+            }
+
+        }, 50);
+    // } else {
+    //     console.log('Sorting failed.');
+    //     console.log('Given Array:' + array.sort((a, b) => { return a - b }) +"\n Sorted Array: "+sorted_array);
+    //     alert('Sorting Failed');
+    // }
         
-    }, 50);    
 }
 
 
 //valdiate purposes
-const areEqual = (firstArray, secondArray)=> {
+const areEqual = (firstArray, secondArray) => {
     if (firstArray !== secondArray) return false;
 
     for(var i = 0; i < firstArray.length ; i++){
